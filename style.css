@@ -33,7 +33,7 @@
   overflow: hidden;
 }
 
-#camera {
+#canvas {
   background-color: white;
   aspect-ratio: 4 / 3;
   height: 100vh;
@@ -46,13 +46,14 @@
 
 #garden,
 #garden-overlay,
-#garden-grass {
+#garden-grass, 
+#seeds-deck {
   position: absolute;
   width: calc(var(--garden-texture-width) * var(--pixel-size));
   height: calc(var(--garden-texture-height) * var(--pixel-size));
 
-  background: url('assets/backgrounds/forest.png') no-repeat;
-  background-size: 300% 100%;
+  background: url(assets/backgrounds/forest.png) no-repeat;
+  background-size: 500% 100%;
 }
 
 #garden-overlay {
@@ -77,14 +78,32 @@
   height: calc(32px * 5 * var(--pixel-size));
 
   display: grid;
-  grid-template-columns: repeat(9, calc(32px * var(--pixel-size)));
   grid-template-rows: repeat(5, calc(32px * var(--pixel-size)));
 }
 
-#garden-grid>.grid-cell:hover {
+#garden-grid > div.grid-row {
+  display: grid;
+  grid-template-columns: repeat(9, calc(32px * var(--pixel-size)));
+}
+
+#garden-grid > div.grid-row:hover {
+  background-color: #ffffff93;
+}
+
+div.grid-cell:hover {
   width: calc(32px * var(--pixel-size));
   height: calc(32px * var(--pixel-size));
   background: url(assets/sprites/HUD/HUD\ assets.png) no-repeat;
   background-size: calc(32px * 10 * var(--pixel-size));
   background-position-x: calc(32px * var(--pixel-size) * -1);
+}
+
+#HUD {
+  width:  100%;
+  height: 100%;
+  position: absolute;
+}
+
+#seeds-deck {
+  background-position-x: calc((var(--garden-texture-width) * -3) * var(--pixel-size));
 }
