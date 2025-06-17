@@ -38,12 +38,23 @@
   overflow-x: scroll;
 }
 
-#garden {
+#garden, #garden-overlay, #garden-grass {
   position: absolute;
-  width: calc(480px * var(--pixel-size));
+  width: calc(576px * var(--pixel-size));
   height: calc(256px * var(--pixel-size));
 
   background: url('assets/backgrounds/forest.png') no-repeat;
   background-size: 300% 100%;
-  background-position-x: calc((-480px * 2) * var(--pixel-size));
+}
+
+#garden {
+  background-position-x: calc((-576px * 2) * var(--pixel-size));
+}
+
+#garden-overlay {
+  background-position-x: 0px;
+}
+
+#garden-grass {
+  background-position-x: calc((-576px * 1) * var(--pixel-size));
 }
