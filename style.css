@@ -1,0 +1,49 @@
+#workspace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: black;
+  margin: 0;
+  user-select: none;
+
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+.bg {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+.container {
+  overflow: hidden;
+}
+
+#camera {
+  background-color: white;
+  aspect-ratio: 4 / 3;
+  height: 100vh;
+  max-height: 100%;
+  max-width: 100vw;
+  position: relative;
+
+  overflow-x: scroll;
+}
+
+#garden {
+  position: absolute;
+  width: calc(480px * var(--pixel-size));
+  height: calc(256px * var(--pixel-size));
+
+  background: url('assets/backgrounds/forest.png') no-repeat;
+  background-size: 300% 100%;
+  background-position-x: calc((-480px * 2) * var(--pixel-size));
+}
