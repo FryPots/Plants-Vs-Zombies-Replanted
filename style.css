@@ -1,3 +1,9 @@
+:root {
+  --garden-texture-width: 576px;
+  --garden-texture-height: 256px;
+  
+}
+
 #workspace {
   display: flex;
   justify-content: center;
@@ -40,15 +46,11 @@
 
 #garden, #garden-overlay, #garden-grass {
   position: absolute;
-  width: calc(576px * var(--pixel-size));
-  height: calc(256px * var(--pixel-size));
+  width:  calc(var(--garden-texture-width)  * var(--pixel-size));
+  height: calc(var(--garden-texture-height) * var(--pixel-size));
 
   background: url('assets/backgrounds/forest.png') no-repeat;
   background-size: 300% 100%;
-}
-
-#garden {
-  background-position-x: calc((-576px * 2) * var(--pixel-size));
 }
 
 #garden-overlay {
@@ -56,5 +58,22 @@
 }
 
 #garden-grass {
-  background-position-x: calc((-576px * 1) * var(--pixel-size));
+  background-position-x: calc((var(--garden-texture-width) * -1) * var(--pixel-size));
+}
+
+#garden {
+  background-position-x: calc((var(--garden-texture-width) * -2) * var(--pixel-size));
+}
+
+#garden-grid{
+  position: relative;
+  left: calc(32px * var(--pixel-size));
+  top:  calc(64px * var(--pixel-size));
+
+  width:  calc(32px * 9 * var(--pixel-size));
+  height: calc(32px * 5 * var(--pixel-size));
+
+  display: grid;
+  grid-template-columns: repeat(9, calc(32px * var(--pixel-size)));
+  grid-template-rows:    repeat(5, calc(32px * var(--pixel-size)));
 }
