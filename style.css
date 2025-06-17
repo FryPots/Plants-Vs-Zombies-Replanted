@@ -107,3 +107,13 @@ div.grid-cell:hover {
 #seeds-deck {
   background-position-x: calc((var(--garden-texture-width) * -3) * var(--pixel-size));
 }
+
+#seeds {
+  position: relative;
+  left: calc(86px * var(--pixel-size));
+  top: calc(5px * var(--pixel-size));
+  height: calc(22px * var(--pixel-size));
+  display: grid;
+  grid-template-columns: repeat(9, calc(20px * var(--pixel-size)));
+  gap: calc(6px * var(--pixel-size));
+}
