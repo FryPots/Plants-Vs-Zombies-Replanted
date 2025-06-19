@@ -33,21 +33,20 @@
   overflow: hidden;
 }
 
-#canvas {
+#canvas, #HUD{
   background-color: white;
   aspect-ratio: 4 / 3;
   height: 100vh;
   max-height: 100%;
   max-width: 100vw;
-  position: relative;
+  position: absolute;
 
   overflow-x: scroll;
 }
 
 #garden,
 #garden-overlay,
-#garden-grass, 
-#seeds-deck {
+#garden-grass {
   position: absolute;
   width: calc(var(--garden-texture-width) * var(--pixel-size));
   height: calc(var(--garden-texture-height) * var(--pixel-size));
@@ -99,21 +98,103 @@ div.grid-cell:hover {
 }
 
 #HUD {
+  background: transparent;
+  pointer-events: none;
+}
+
+
+#seeds-deck {
+
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: auto;
+}
+
+#seeds-deck .seed-container{
   width:  100%;
-  height: 100%;
+  height: calc(32px * var(--pixel-size));
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  background: #45283c;
+  position: relative;
+  border: calc(6px * var(--pixel-size)) solid #8f563b;
+  border-top-color: #d9a066;
+  border-top-style: outset;
+  border-bottom-color: #45283c;
+}
+
+.box > .box-corner {
+  width: calc(6px * var(--pixel-size));
+  height: calc(6px * var(--pixel-size));
+  background: aqua;
+  background: url(assets/sprites/HUD/HUD\ assets.png) no-repeat;
+  background-size: calc(32px * 10 * var(--pixel-size));
+  background-position-x: calc(((32px * -3) - 10px) * var(--pixel-size));
+  background-position-y: calc(-10px * var(--pixel-size));
   position: absolute;
 }
 
-#seeds-deck {
-  background-position-x: calc((var(--garden-texture-width) * -3) * var(--pixel-size));
+.box > .box-corner:nth-of-type(1) {
+  top: calc(-6px * var(--pixel-size));
+  left: calc(-6px * var(--pixel-size));
 }
 
-#seeds {
-  position: relative;
-  left: calc(86px * var(--pixel-size));
-  top: calc(5px * var(--pixel-size));
-  height: calc(22px * var(--pixel-size));
-  display: grid;
-  grid-template-columns: repeat(9, calc(20px * var(--pixel-size)));
-  gap: calc(6px * var(--pixel-size));
+.box > .box-corner:nth-of-type(2) {
+  right: calc(-6px * var(--pixel-size));
+  top: calc(-6px * var(--pixel-size));
+  background-position-x: calc(((32px * -3) - 16px) * var(--pixel-size));
+  background-position-y: calc(-10px * var(--pixel-size));
+}
+
+.box > .box-corner:nth-of-type(3) {
+  right: calc(-6px * var(--pixel-size));
+  bottom: calc(-6px * var(--pixel-size));
+  background-position-x: calc(((32px * -3) - 16px) * var(--pixel-size));
+  background-position-y: calc(-16px * var(--pixel-size));
+}
+
+.box > .box-corner:nth-of-type(4) {
+  bottom: calc(-6px * var(--pixel-size));
+  left: calc(-6px * var(--pixel-size));
+  background-position-y: calc(-16px * var(--pixel-size));
+}
+
+.box::before {
+  background-color: transparent;
+
+  position: absolute;
+  width:100%;
+  height: 100%;
+  content: '';
+  border: calc(4px * var(--pixel-size)) solid #d9a066;
+  border-top-color: #eec39a;
+  border-bottom-color: #8f563b;
+}
+
+.box::after {
+  
+  background-color: transparent;
+
+  position: absolute;
+  width:100%;
+  height: 100%;
+  content: '';
+  border: calc(2px * var(--pixel-size)) solid #8f563b;
+  border-top-color: #663931;
+  border-bottom-color: #d9a066;
+}
+
+#seeds-deck .water-container {
+  width:  200%;
+  height: calc(32px * var(--pixel-size));
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
